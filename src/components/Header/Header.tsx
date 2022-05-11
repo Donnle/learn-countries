@@ -1,18 +1,15 @@
+import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {userDataSelector} from "../../redux/selectors";
 
 import styles from './Header.module.scss'
-import {loadedSelector, loadingSelector, userDataSelector} from "../../redux/selectors";
-import {connect} from "react-redux";
 
 
 interface Props {
   userData: any
-  loading: boolean
-  loaded: boolean
 }
 
-const Header = ({userData, loaded, loading}: Props) => {
-  console.log(userData)
+const Header = ({userData}: Props) => {
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
@@ -20,18 +17,16 @@ const Header = ({userData, loaded, loading}: Props) => {
           <div className={styles.logo}>
             <Link to='/'>Logo</Link>
           </div>
-          {
-            userData ? <p>{userData.username}</p> :
-              (<div className={styles.auth}>
-                  <div className={styles.registration}>
-                    <Link to='/registration'>Регистрация</Link>
-                  </div>
-                  <div className={styles.login}>
-                    <Link to='/login'>Вход</Link>
-                  </div>
+          {userData ? <span className={styles.username}>{userData.username}</span> :
+            (<div className={styles.auth}>
+                <div className={styles.registration}>
+                  <Link to='/registration'>Регистрация</Link>
                 </div>
-              )
-          }
+                <div className={styles.login}>
+                  <Link to='/login'>Вход</Link>
+                </div>
+              </div>
+            )}
         </div>
       </div>
     </header>
@@ -40,8 +35,6 @@ const Header = ({userData, loaded, loading}: Props) => {
 
 const mapStateToProps = (state: any) => ({
   userData: userDataSelector(state),
-  loading: loadingSelector(state),
-  loaded: loadedSelector(state),
 })
 
 export default connect(mapStateToProps)(Header)

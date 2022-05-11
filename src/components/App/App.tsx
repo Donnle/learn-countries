@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {connect} from "react-redux";
-import {Route, Routes} from 'react-router';
+import {Navigate, Route, Routes} from 'react-router';
 import axios from "axios";
 import Header from '../Header'
 import Footer from "../Footer";
@@ -31,10 +31,12 @@ const App = ({userId, loadUserInfo}: Props) => {
       <Header/>
       <Routes>
         <Route path='/login'
-               element={<AuthPage title='Логин' buttonText='Войти' callFunc={loginFunc}/>}/>
+               element={userId ? <Navigate replace to="/"/> :
+                 <AuthPage title='Логин' buttonText='Войти' callFunc={loginFunc}/>}/>
 
         <Route path='/registration'
-               element={<AuthPage title='Регистрация' buttonText='Зарегистрироваться' callFunc={registrationFunc}/>}/>
+               element={userId ? <Navigate replace to="/"/> :
+                 <AuthPage title='Регистрация' buttonText='Зарегистрироваться' callFunc={registrationFunc}/>}/>
 
         <Route path='/' element={<MainPage/>}/>
       </Routes>
