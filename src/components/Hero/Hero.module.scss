@@ -1,0 +1,126 @@
+.hero {
+  background: url(../../assets/images/hero_background.png) center no-repeat;
+  background-size: cover;
+  min-height: Min(calc(100vh - 84.39px), 695px);
+}
+
+.wrapper {
+  max-width: 810px;
+  margin: 0 auto;
+  padding-top: 8vh;
+}
+
+.background {
+  background-color: #5DBCDA;
+  border-radius: 15px;
+  padding: 81px 94px;
+  text-align: center;
+}
+
+.title {
+  h1 {
+    font-size: 4.8rem;
+    line-height: 1.2em;
+    padding-bottom: 16px;
+  }
+}
+
+.subtitle {
+  p {
+    font-size: 2.0rem;
+    line-height: 1.2em;
+    padding-bottom: 40px;
+  }
+}
+
+.button {
+  a {
+    display: inline-block;
+    font-size: 2rem;
+    line-height: 1.2em;
+    padding: 8px 65px;
+    background-color: #3A94B0;
+    border-radius: 5px;
+  }
+
+  a:hover {
+    background-color: #1e7796;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrapper {
+    max-width: 700px;
+  }
+
+  .background {
+    background-color: #5DBCDA;
+    border-radius: 15px;
+    padding: 40px 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 500px;
+  }
+
+  .title {
+    h1 {
+      font-size: 3.2rem;
+      padding-bottom: 8px;
+    }
+  }
+
+  .subtitle {
+    p {
+      font-size: 1.4rem;
+      padding-bottom: 30px;
+    }
+  }
+
+  .button {
+    a {
+      font-size: 1.4rem;
+      padding: 8px 50px;
+    }
+  }
+}
+
+@media (max-width: 625px) {
+  .wrapper {
+    max-width: 400px;
+  }
+
+  .title {
+    span {
+      font-size: 2.6rem;
+    }
+  }
+
+  .subtitle {
+    span {
+      font-size: 1.2rem;
+      padding-bottom: 25px;
+    }
+  }
+
+  .button {
+    a {
+      font-size: 1.2rem;
+      padding: 8px 35px;
+    }
+  }
+
+  .hero {
+    min-height: Min(calc(100vh - 77.19px), 695px);
+  }
+}
+
+@media (max-width: 425px) {
+  .hero {
+    min-height: Min(calc(100vh - 72.39px), 695px);
+  }
+}

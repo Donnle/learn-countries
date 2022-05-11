@@ -1,0 +1,48 @@
+.popup {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.background {
+  background-color: #68BEEC;
+  border-radius: 15px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 2.4rem;
+  line-height: 1.2em;
+  padding: 31px 0 20px;
+  border-bottom: 2px solid #0299EA;
+}
+
+.formWrapper {
+  padding: 47px 35px 56px;
+}
+
+.login {
+  padding-bottom: 35px;
+}
+
+.login,
+.password {
+  input {
+    padding: 10px;
+    width: 300px;
+  }
+}
+
+.submit {
+  padding: 15px 0;
+  width: 100%;
+  background: #0299EA;
+
+  span {
+    font-size: 2.4rem;
+    line-height: 1.2em;
+  }
+}

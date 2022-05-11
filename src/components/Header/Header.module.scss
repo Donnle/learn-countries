@@ -1,0 +1,80 @@
+.header {
+  background-color: #68BEEC;
+}
+
+.wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 23px 20px;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  a {
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    line-height: 1.2em;
+    padding: 23px 0;
+  }
+}
+
+.auth {
+  display: flex;
+  gap: 10px;
+}
+
+.registration,
+.login {
+  a {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    line-height: 1.2em;
+    padding: 16px 15px;
+  }
+
+  a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+  }
+}
+
+@media (max-width: 625px) {
+  .logo {
+    a {
+      font-size: 2.6rem;
+    }
+  }
+
+  .registration,
+  .login {
+    a {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .logo {
+    a {
+      font-size: 2.2rem;
+    }
+  }
+
+  .registration,
+  .login {
+    a {
+      font-size: 1.6rem;
+    }
+  }
+}

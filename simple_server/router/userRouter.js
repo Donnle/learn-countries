@@ -38,7 +38,6 @@ router.post('/registration', [
     return res.status(400).json({message: 'Error, try later'})
   }
 })
-
 router.put('/addLearnedCountry', async (req, res) => {
   try {
     const {userId, countryId} = req.body
@@ -50,7 +49,6 @@ router.put('/addLearnedCountry', async (req, res) => {
     return res.status(400).json({message: 'Error, try later'})
   }
 })
-
 router.put('/removeLearnedCountry', async (req, res) => {
   try {
     const {userId, countryId} = req.body
@@ -63,6 +61,12 @@ router.put('/removeLearnedCountry', async (req, res) => {
     console.log(e)
     return res.status(400).json({message: 'Error, try later'})
   }
+})
+router.get('/userInfo/:userId', async (req, res) => {
+  const {userId} = req.params
+  const user = await User.findById(userId)
+  if (!user) return res.status(400).json({message: 'User is not defined'})
+  return res.status(200).json({message: 'Success', user})
 })
 
 module.exports = router
