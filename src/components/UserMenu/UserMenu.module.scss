@@ -1,0 +1,22 @@
+.userMenu {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  background-color: #C4C4C4;
+  padding: 20px;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.item {
+  a {
+    font-size: 1.6rem;
+    display: block;
+    padding: 5px 0;
+  }
+}

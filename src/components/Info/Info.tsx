@@ -10,15 +10,13 @@ const Info = ({title, subtitle}: Props) => {
     <div className={styles.info}>
       <div className={styles.background}>
         <div className={styles.wrapper}>
-          <div className={styles.text}>
-            <div className={styles.title}>
-              <h1>{title}</h1>
-            </div>
-            <div className={styles.subtitle}>
-              <p>
-                {subtitle}
-              </p>
-            </div>
+          <div className={styles.title}>
+            <h1>{title}</h1>
+          </div>
+          <div className={styles.subtitle}>
+            <p>
+              {subtitle}
+            </p>
           </div>
         </div>
       </div>

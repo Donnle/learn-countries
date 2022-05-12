@@ -1,0 +1,29 @@
+import {Link} from "react-router-dom";
+
+import styles from './UserMenu.module.scss'
+
+interface Items {
+  id: number
+  label: string
+  link: string
+}
+
+interface Props {
+  arrayOfItems: Array<Items>
+}
+
+const UserMenu = ({arrayOfItems}: Props) => {
+  return (
+    <div className={styles.userMenu}>
+      <ul className={styles.flexbox}>
+        {arrayOfItems.map(({id, label, link}: Items) =>
+          <li className={styles.item} key={id}>
+            <Link to={link}>{label}</Link>
+          </li>
+        )}
+      </ul>
+    </div>
+  )
+}
+
+export default UserMenu
