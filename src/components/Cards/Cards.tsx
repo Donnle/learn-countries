@@ -1,5 +1,7 @@
-import styles from "./Cards.module.scss";
 import Card from "../Card";
+
+import styles from "./Cards.module.scss";
+
 
 interface Props {
   filteredArray: any
@@ -8,9 +10,9 @@ interface Props {
 const Cards = ({filteredArray}: Props) => {
   return (
     <ul className={styles.list}>
-      {filteredArray?.map(({country, buttonBackground}: any) => <Card key={country._id} imageLink={country.flag}
-                                                                      countryName={country.name}
-                                                                      buttonBackgroundColor={buttonBackground}/>)}
+      {Object.values(filteredArray)?.map(({country, isLearned}: any) =>
+        <Card key={country._id} imageLink={country.flag} countryName={country.name} isLearned={isLearned}/>
+      )}
     </ul>
   )
 }

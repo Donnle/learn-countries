@@ -24,20 +24,12 @@ interface Props {
   loadUserInfo: any
   loading: boolean
   loaded: boolean
-  onlyLearnedCountries: any
-  onlyNotLearnedCountries: any
+  notLearnedCountries: any
+  learnedCountries: any
   allCountries: any
 }
 
-const App = ({
-               userId,
-               loadUserInfo,
-               loaded,
-               loading,
-               onlyLearnedCountries,
-               onlyNotLearnedCountries,
-               allCountries
-             }: Props) => {
+const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learnedCountries, allCountries}: Props) => {
   const registrationFunc = (username: string, password: string) =>
     axios.post('/user/registration', {username, password})
   const loginFunc = (username: string, password: string) =>
@@ -63,9 +55,9 @@ const App = ({
 
 
         <Route path='/known_countries'
-               element={userId ? <CountriesPage filteredArray={onlyLearnedCountries}/> : <Navigate replace to="/"/>}/>
+               element={userId ? <CountriesPage filteredArray={learnedCountries}/> : <Navigate replace to="/"/>}/>
         <Route path='/unknown_countries'
-               element={userId ? <CountriesPage filteredArray={onlyNotLearnedCountries}/> :
+               element={userId ? <CountriesPage filteredArray={notLearnedCountries}/> :
                  <Navigate replace to="/"/>}/>
         <Route path='/all_countries'
                element={userId ? <CountriesPage filteredArray={allCountries}/> : <Navigate replace to="/"/>}/>
@@ -82,9 +74,9 @@ const mapStateToProps = (state: any) => ({
   userId: userIdSelector(state),
   loading: userLoadingSelector(state),
   loaded: userLoadedSelector(state),
-  onlyLearnedCountries: filteredLearnedCountriesSelector(state),
-  onlyNotLearnedCountries: filteredNotLearnedCountriesSelector(state),
-  allCountries: filteredAllCountriesSelector(state),
+  notLearnedCountries: state.filteredCountries.onlyNotLearnedCountries,
+  learnedCountries: state.filteredCountries.onlyLearnedCountries,
+  allCountries: state.filteredCountries.allCountries,
 })
 
 const mapDispatchToProps = (dispatch: any) => ({

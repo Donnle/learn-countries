@@ -8,7 +8,7 @@ interface IUserData {
 
 interface IInitialState {
   userId: string | null
-  userData: IUserData
+  userData: IUserData | null
   loading: boolean
   loaded: boolean
   error: null | object
@@ -16,7 +16,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
   userId: JSON.parse(localStorage.getItem(USER_INFO)!) || null,
-  userData: {},
+  userData: null,
   loading: false,
   loaded: false,
   error: null

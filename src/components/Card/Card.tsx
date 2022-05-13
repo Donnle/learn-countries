@@ -3,11 +3,11 @@ import styles from "./Card.module.scss";
 interface Props {
   imageLink: string
   countryName: string
-  buttonBackgroundColor?: string
+  isLearned?: string
   buttonText?: string
 }
 
-const Card = ({imageLink, countryName, buttonText, buttonBackgroundColor = '#FF7575'}: Props) => {
+const Card = ({imageLink, countryName, buttonText, isLearned = '#FF7575'}: Props) => {
   return (
     <li className={styles.card}>
       <div className={styles.img}>
@@ -17,7 +17,7 @@ const Card = ({imageLink, countryName, buttonText, buttonBackgroundColor = '#FF7
         <div className={styles.title}>
           <h2>{countryName}</h2>
         </div>
-        <button className={styles.button} style={{backgroundColor: buttonBackgroundColor}}>
+        <button className={styles.button} style={{backgroundColor: isLearned ? '#4fc23b' : '#c03636'}}>
           <span>{buttonText || 'уже знаю'}</span>
         </button>
       </div>

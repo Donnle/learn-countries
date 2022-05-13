@@ -12,21 +12,24 @@ export default (state = initialState, action: any) => {
   switch (type) {
     case SORT_COUNTRIES:
       return produce(state, (draft) => {
-        const {allCountries, learnedCountries} = payload
-        const onlyLearnedCountries = learnedCountries.reduce((acc: any, i: any) => ({
-          ...acc,
-          [i]: {
-            country: allCountries[i],
-            buttonBackground: '#75FF83'
-          }
-        }), {})
-        const onlyNotLearnedCountries = Object.entries(allCountries)
-          .filter(([key, value]: any) => !onlyLearnedCountries[key])
-          .reduce((acc: any, [key, value]: any) => ({
+        let {allCountries, learnedCountries} = payload
+
+        const onlyLearnedCountries = learnedCountries
+          .reduce((acc: object, countryId: string) => ({
             ...acc,
-            [key]: {
-              country: value,
-              buttonBackground: '#FF7575'
+            [countryId]: {
+              country: allCountries[countryId],
+              isLearned: true
+            }
+          }), {})
+
+        const onlyNotLearnedCountries = Object.values(allCountries)
+          .filter(({_id}: any) => !onlyLearnedCountries[_id])
+          .reduce((acc: object, country: any) => ({
+            ...acc,
+            [country._id]: {
+              country,
+              isLearned: false
             }
           }), {})
 
