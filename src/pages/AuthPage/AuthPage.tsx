@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import useFormFields from "../../utils/useFormFields";
-import {addUserId, loadUserInfo} from "../../redux/actions";
+import {addUserId} from "../../redux/actions";
 
 import styles from './AuthPage.module.scss'
 
@@ -10,10 +10,9 @@ interface Props {
   buttonText: string
   callFunc: (username: string, password: string) => any
   addUserId: (s: string) => void
-  loadUserInfo: (userId: string) => void
 }
 
-const AuthPage = ({title, buttonText, callFunc, addUserId, loadUserInfo}: Props) => {
+const AuthPage = ({title, buttonText, callFunc, addUserId}: Props) => {
   const [fields, handleFieldChange] = useFormFields({
     username: '',
     password: ''
@@ -67,7 +66,6 @@ const AuthPage = ({title, buttonText, callFunc, addUserId, loadUserInfo}: Props)
 
 const mapDispatchToProps = (dispatch: any) => ({
   addUserId: (s: string) => dispatch(addUserId(s)),
-  loadUserInfo: (userId: string) => dispatch(loadUserInfo(userId))
 })
 
 export default connect(null, mapDispatchToProps)(AuthPage)

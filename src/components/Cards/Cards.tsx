@@ -1,10 +1,11 @@
 import Card from "../Card";
+import {IFilteredCountry} from "../../redux/store";
 
 import styles from "./Cards.module.scss";
 
 
 interface Props {
-  filteredArray: any
+  filteredArray: IFilteredCountry
 }
 
 const Cards = ({filteredArray}: Props) => {

@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 import UserMenu from "../UserMenu";
 import {userDataSelector} from "../../redux/selectors";
+import {IUserData} from "../../redux/store";
 
 import styles from './Header.module.scss'
 
 
 interface Props {
-  userData: any
+  userData: null | IUserData
 }
 
 const Header = ({userData}: Props) => {

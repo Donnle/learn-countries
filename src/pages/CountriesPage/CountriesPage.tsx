@@ -1,16 +1,19 @@
-import styles from './CountriesPage.module.scss'
-import Cards from "../../components/Cards";
+import {useEffect} from "react";
 import {connect} from "react-redux";
+import Cards from "../../components/Cards";
 import {loadCountries} from "../../redux/actions";
 import {loadedCountriesSelector, loadingCountriesSelector, userDataSelector} from "../../redux/selectors";
-import {useEffect} from "react";
+import {IFilteredCountry, IUserData} from "../../redux/store";
+
+import styles from './CountriesPage.module.scss'
+
 
 interface Props {
-  userData: any
-  loadCountries: any
+  userData: null | IUserData
+  loadCountries: () => void
   loading: boolean
   loaded: boolean
-  filteredArray: any
+  filteredArray: IFilteredCountry
 }
 
 const CountriesPage = ({userData, loadCountries, loaded, loading, filteredArray}: Props) => {

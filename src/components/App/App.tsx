@@ -1,32 +1,27 @@
+import axios from "axios";
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import {Navigate, Route, Routes} from 'react-router';
-import axios from "axios";
 import Header from '../Header'
 import Footer from "../Footer";
 import MainPage from "../../pages/MainPage";
 import AuthPage from "../../pages/AuthPage";
-import {
-  filteredAllCountriesSelector,
-  filteredLearnedCountriesSelector, filteredNotLearnedCountriesSelector,
-  userIdSelector,
-  userLoadedSelector,
-  userLoadingSelector
-} from "../../redux/selectors";
-import {loadUserInfo} from "../../redux/actions";
 import CountriesPage from "../../pages/CountriesPage";
+import {userIdSelector, userLoadedSelector, userLoadingSelector} from "../../redux/selectors";
+import {loadUserInfo} from "../../redux/actions";
+import {IFilteredCountry} from "../../redux/store";
 
 import styles from './App.module.scss'
 
 
 interface Props {
   userId: string
-  loadUserInfo: any
+  loadUserInfo: (userId: string) => void
   loading: boolean
   loaded: boolean
-  notLearnedCountries: any
-  learnedCountries: any
-  allCountries: any
+  notLearnedCountries: IFilteredCountry
+  learnedCountries: IFilteredCountry
+  allCountries: IFilteredCountry
 }
 
 const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learnedCountries, allCountries}: Props) => {
@@ -57,8 +52,7 @@ const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learne
         <Route path='/known_countries'
                element={userId ? <CountriesPage filteredArray={learnedCountries}/> : <Navigate replace to="/"/>}/>
         <Route path='/unknown_countries'
-               element={userId ? <CountriesPage filteredArray={notLearnedCountries}/> :
-                 <Navigate replace to="/"/>}/>
+               element={userId ? <CountriesPage filteredArray={notLearnedCountries}/> : <Navigate replace to="/"/>}/>
         <Route path='/all_countries'
                element={userId ? <CountriesPage filteredArray={allCountries}/> : <Navigate replace to="/"/>}/>
 

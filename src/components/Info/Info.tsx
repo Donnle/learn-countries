@@ -1,5 +1,6 @@
 import styles from './Info.module.scss'
 
+
 interface Props {
   title: string
   subtitle: string

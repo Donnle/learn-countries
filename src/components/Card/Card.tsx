@@ -7,7 +7,7 @@ interface Props {
   buttonText?: string
 }
 
-const Card = ({imageLink, countryName, buttonText, isLearned = '#FF7575'}: Props) => {
+const Card = ({imageLink, countryName, buttonText, isLearned}: Props) => {
   return (
     <li className={styles.card}>
       <div className={styles.img}>
@@ -17,7 +17,7 @@ const Card = ({imageLink, countryName, buttonText, isLearned = '#FF7575'}: Props
         <div className={styles.title}>
           <h2>{countryName}</h2>
         </div>
-        <button className={styles.button} style={{backgroundColor: isLearned ? '#4fc23b' : '#c03636'}}>
+        <button className={styles.button} style={{backgroundColor: isLearned ? '#75FF83' : '#FF7575'}}>
           <span>{buttonText || 'уже знаю'}</span>
         </button>
       </div>

@@ -1,5 +1,7 @@
-import styles from './Example.module.scss'
 import {Link} from "react-router-dom";
+
+import styles from './Example.module.scss'
+
 
 interface Props {
   title: string

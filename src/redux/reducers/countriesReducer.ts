@@ -1,7 +1,8 @@
-import {FAILURE, LOAD_COUNTRIES, REQUEST, SUCCESS} from "../constants";
 import produce from "immer";
+import {ICountries} from "../store";
+import {FAILURE, LOAD_COUNTRIES, REQUEST, SUCCESS} from "../constants";
 
-const initialState = {
+const initialState: ICountries = {
   entities: {},
   loading: false,
   loaded: false,

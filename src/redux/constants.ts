@@ -1,6 +1,5 @@
 export const USER_INFO = 'USER_INFO'
 
-
 export const LOAD_COUNTRIES = 'LOAD_COUNTRIES'
 export const LOAD_USER_DATA = 'LOAD_USER_DATA'
 export const SORT_COUNTRIES = 'SORT_COUNTRIES'

@@ -1,20 +1,21 @@
 import {createSelector} from "reselect";
+import {IState} from "./store";
 
-export const userIdSelector = ({user}: any) => user.userId
-export const userDataSelector = ({user}: any) => user.userData
-export const learnedCountriesSelector = ({user}: any) => user.userData.learnedCountries
+export const userIdSelector = ({user}: IState) => user.userId
+export const userDataSelector = ({user}: IState) => user.userData
+export const learnedCountriesSelector = ({user}: IState) => user.userData?.learnedCountries
 
-export const userLoadingSelector = ({user}: any) => user.loading
-export const userLoadedSelector = ({user}: any) => user.loaded
+export const userLoadingSelector = ({user}: IState) => user.loading
+export const userLoadedSelector = ({user}: IState) => user.loaded
 
 
-export const countriesSelector = ({countries}: any) => countries.entities
-export const loadingCountriesSelector = ({countries}: any) => countries.loading
-export const loadedCountriesSelector = ({countries}: any) => countries.loaded
+export const countriesSelector = ({countries}: IState) => countries.entities
+export const loadingCountriesSelector = ({countries}: IState) => countries.loading
+export const loadedCountriesSelector = ({countries}: IState) => countries.loaded
 
-export const filteredObjectLearnedCountriesSelector = ({filteredCountries}: any) => filteredCountries.onlyLearnedCountries
-export const filteredObjectNotLearnedCountriesSelector = ({filteredCountries}: any) => filteredCountries.onlyNotLearnedCountries
-export const filteredObjectAllCountriesSelector = ({filteredCountries}: any) => filteredCountries.allCountries
+export const filteredObjectLearnedCountriesSelector = ({filteredCountries}: IState) => filteredCountries.onlyLearnedCountries
+export const filteredObjectNotLearnedCountriesSelector = ({filteredCountries}: IState) => filteredCountries.onlyNotLearnedCountries
+export const filteredObjectAllCountriesSelector = ({filteredCountries}: IState) => filteredCountries.allCountries
 
 
 export const filteredLearnedCountriesSelector = createSelector(

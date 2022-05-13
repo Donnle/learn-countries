@@ -1,12 +1,14 @@
-import {SORT_COUNTRIES} from "../constants";
 import produce from "immer";
+import {IFilteredCountries} from "../store";
+import {SORT_COUNTRIES} from "../constants";
 
-const initialState = {
+const initialState: IFilteredCountries = {
   onlyLearnedCountries: {},
   onlyNotLearnedCountries: {},
   allCountries: {}
 }
 
+// eslint-disable-next-line
 export default (state = initialState, action: any) => {
   const {type, payload} = action
   switch (type) {

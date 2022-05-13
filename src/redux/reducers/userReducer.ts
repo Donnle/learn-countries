@@ -1,20 +1,8 @@
 import produce from "immer";
+import {IUser} from "../store";
 import {ADD_USER_ID, FAILURE, LOAD_USER_DATA, REQUEST, SUCCESS, USER_INFO} from "../constants";
 
-interface IUserData {
-  username?: string
-  learnedCountries?: Array<string>
-}
-
-interface IInitialState {
-  userId: string | null
-  userData: IUserData | null
-  loading: boolean
-  loaded: boolean
-  error: null | object
-}
-
-const initialState: IInitialState = {
+const initialState: IUser = {
   userId: JSON.parse(localStorage.getItem(USER_INFO)!) || null,
   userData: null,
   loading: false,
