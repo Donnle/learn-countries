@@ -33,22 +33,26 @@ export interface ICountries {
 }
 
 export interface IFilteredCountry {
-  [key: string]: {
-    country: ICountry
-    isLearned: boolean
-  }
+  country: ICountry
+  isLearned: boolean
 }
 
 export interface IFilteredCountries {
-  onlyLearnedCountries: IFilteredCountry
-  onlyNotLearnedCountries: IFilteredCountry
-  allCountries: IFilteredCountry
+  onlyLearnedCountries: {
+    [key: string]: IFilteredCountry
+  }
+  onlyNotLearnedCountries: {
+    [key: string]: IFilteredCountry
+  }
+  allCountries: {
+    [key: string]: IFilteredCountry
+  }
 }
 
 export interface IState {
   user: IUser
   countries: ICountries
-  filteredCountries: IFilteredCountries
+  sortedCountries: IFilteredCountries
 }
 
 const persistedState = loadState()

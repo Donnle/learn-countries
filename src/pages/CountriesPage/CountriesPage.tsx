@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {connect} from "react-redux";
 import Cards from "../../components/Cards";
 import {loadCountries} from "../../redux/actions";
-import {loadedCountriesSelector, loadingCountriesSelector, userDataSelector} from "../../redux/selectors";
+import {countriesLoadedSelector, countriesLoadingSelector, userDataSelector} from "../../redux/selectors";
 import {IFilteredCountry, IUserData} from "../../redux/store";
 
 import styles from './CountriesPage.module.scss'
@@ -13,7 +13,7 @@ interface Props {
   loadCountries: () => void
   loading: boolean
   loaded: boolean
-  filteredArray: IFilteredCountry
+  filteredArray: Array<IFilteredCountry>
 }
 
 const CountriesPage = ({userData, loadCountries, loaded, loading, filteredArray}: Props) => {
@@ -32,9 +32,9 @@ const CountriesPage = ({userData, loadCountries, loaded, loading, filteredArray}
 }
 
 const mapStateToProps = (state: any) => ({
-  loading: loadingCountriesSelector(state),
-  loaded: loadedCountriesSelector(state),
   userData: userDataSelector(state),
+  loading: countriesLoadingSelector(state),
+  loaded: countriesLoadedSelector(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({

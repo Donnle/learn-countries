@@ -7,7 +7,14 @@ import Footer from "../Footer";
 import MainPage from "../../pages/MainPage";
 import AuthPage from "../../pages/AuthPage";
 import CountriesPage from "../../pages/CountriesPage";
-import {userIdSelector, userLoadedSelector, userLoadingSelector} from "../../redux/selectors";
+import {
+  allCountriesArraySelector,
+  learnedCountriesArraySelector,
+  notLearnedCountriesArraySelector,
+  userDataLoadedSelector,
+  userDataLoadingSelector,
+  userIdSelector,
+} from "../../redux/selectors";
 import {loadUserInfo} from "../../redux/actions";
 import {IFilteredCountry} from "../../redux/store";
 
@@ -19,9 +26,9 @@ interface Props {
   loadUserInfo: (userId: string) => void
   loading: boolean
   loaded: boolean
-  notLearnedCountries: IFilteredCountry
-  learnedCountries: IFilteredCountry
-  allCountries: IFilteredCountry
+  notLearnedCountries: Array<IFilteredCountry>
+  learnedCountries: Array<IFilteredCountry>
+  allCountries: Array<IFilteredCountry>
 }
 
 const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learnedCountries, allCountries}: Props) => {
@@ -66,11 +73,11 @@ const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learne
 
 const mapStateToProps = (state: any) => ({
   userId: userIdSelector(state),
-  loading: userLoadingSelector(state),
-  loaded: userLoadedSelector(state),
-  notLearnedCountries: state.filteredCountries.onlyNotLearnedCountries,
-  learnedCountries: state.filteredCountries.onlyLearnedCountries,
-  allCountries: state.filteredCountries.allCountries,
+  loading: userDataLoadingSelector(state),
+  loaded: userDataLoadedSelector(state),
+  learnedCountries: learnedCountriesArraySelector(state),
+  notLearnedCountries: notLearnedCountriesArraySelector(state),
+  allCountries: allCountriesArraySelector(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({

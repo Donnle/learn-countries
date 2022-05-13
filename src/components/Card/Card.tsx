@@ -3,7 +3,7 @@ import styles from "./Card.module.scss";
 interface Props {
   imageLink: string
   countryName: string
-  isLearned?: string
+  isLearned?: boolean
   buttonText?: string
 }
 

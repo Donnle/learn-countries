@@ -3,30 +3,18 @@ import {IState} from "./store";
 
 export const userIdSelector = ({user}: IState) => user.userId
 export const userDataSelector = ({user}: IState) => user.userData
-export const learnedCountriesSelector = ({user}: IState) => user.userData?.learnedCountries
+export const userLearnedCountriesSelector = ({user}: IState) => user.userData?.learnedCountries
+export const userDataLoadingSelector = ({user}: IState) => user.loading
+export const userDataLoadedSelector = ({user}: IState) => user.loaded
 
-export const userLoadingSelector = ({user}: IState) => user.loading
-export const userLoadedSelector = ({user}: IState) => user.loaded
+export const countriesEntitiesSelector = ({countries}: IState) => countries.entities
+export const countriesLoadingSelector = ({countries}: IState) => countries.loading
+export const countriesLoadedSelector = ({countries}: IState) => countries.loaded
 
+export const learnedCountriesSelector = ({sortedCountries}: IState) => sortedCountries.onlyLearnedCountries
+export const notLearnedCountriesSelector = ({sortedCountries}: IState) => sortedCountries.onlyNotLearnedCountries
+export const allCountriesSelector = ({sortedCountries}: IState) => sortedCountries.allCountries
 
-export const countriesSelector = ({countries}: IState) => countries.entities
-export const loadingCountriesSelector = ({countries}: IState) => countries.loading
-export const loadedCountriesSelector = ({countries}: IState) => countries.loaded
-
-export const filteredObjectLearnedCountriesSelector = ({filteredCountries}: IState) => filteredCountries.onlyLearnedCountries
-export const filteredObjectNotLearnedCountriesSelector = ({filteredCountries}: IState) => filteredCountries.onlyNotLearnedCountries
-export const filteredObjectAllCountriesSelector = ({filteredCountries}: IState) => filteredCountries.allCountries
-
-
-export const filteredLearnedCountriesSelector = createSelector(
-  filteredObjectLearnedCountriesSelector,
-  Object.values
-)
-export const filteredNotLearnedCountriesSelector = createSelector(
-  filteredObjectNotLearnedCountriesSelector,
-  Object.values
-)
-export const filteredAllCountriesSelector = createSelector(
-  filteredObjectAllCountriesSelector,
-  Object.values
-)
+export const learnedCountriesArraySelector = createSelector(learnedCountriesSelector, Object.values)
+export const notLearnedCountriesArraySelector = createSelector(notLearnedCountriesSelector, Object.values)
+export const allCountriesArraySelector = createSelector(allCountriesSelector, Object.values)

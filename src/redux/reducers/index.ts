@@ -6,5 +6,5 @@ import filteredCountriesReducer from "./filteredCountriesReducer";
 export default combineReducers({
   user: userReducer,
   countries: countriesReducer,
-  filteredCountries: filteredCountriesReducer
+  sortedCountries: filteredCountriesReducer
 })
