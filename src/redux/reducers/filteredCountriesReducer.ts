@@ -1,6 +1,7 @@
 import produce from "immer";
 import {IFilteredCountries} from "../store";
-import {SORT_COUNTRIES} from "../constants";
+import {ADD_LEARNED_COUNTRY, REMOVE_LEARNED_COUNTRY, SORT_COUNTRIES} from "../constants";
+import * as _ from "lodash";
 
 const initialState: IFilteredCountries = {
   onlyLearnedCountries: {},
@@ -38,6 +39,20 @@ export default (state = initialState, action: any) => {
         draft.onlyLearnedCountries = onlyLearnedCountries
         draft.onlyNotLearnedCountries = onlyNotLearnedCountries
         draft.allCountries = {...onlyNotLearnedCountries, ...onlyLearnedCountries}
+      })
+    case ADD_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.onlyLearnedCountries[countryId] = {country: draft.allCountries[countryId].country, isLearned: true}
+        draft.onlyNotLearnedCountries = _.omit(draft.onlyNotLearnedCountries, [countryId])
+        draft.allCountries = {...draft.onlyNotLearnedCountries, ...draft.onlyLearnedCountries}
+      })
+    case REMOVE_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.onlyLearnedCountries = _.omit(draft.onlyLearnedCountries, [countryId])
+        draft.onlyNotLearnedCountries[countryId] = {...draft.allCountries[countryId], isLearned: false}
+        draft.allCountries = {...draft.onlyNotLearnedCountries, ...draft.onlyLearnedCountries}
       })
     default:
       return state

@@ -1,6 +1,15 @@
 import produce from "immer";
 import {IUser} from "../store";
-import {ADD_USER_ID, FAILURE, LOAD_USER_DATA, REQUEST, SUCCESS, USER_INFO} from "../constants";
+import {
+  ADD_LEARNED_COUNTRY,
+  ADD_USER_ID,
+  FAILURE,
+  LOAD_USER_DATA,
+  REMOVE_LEARNED_COUNTRY,
+  REQUEST,
+  SUCCESS,
+  USER_INFO
+} from "../constants";
 
 const initialState: IUser = {
   userId: JSON.parse(localStorage.getItem(USER_INFO)!) || null,
@@ -33,6 +42,16 @@ export default (state = initialState, action: any) => {
         draft.error = payload
       })
 
+    case ADD_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.userData?.learnedCountries?.push(countryId)
+      })
+    case REMOVE_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.userData?.learnedCountries?.filter((i) => i !== countryId)
+      })
     case ADD_USER_ID:
       return produce(state, (draft) => {
         draft.userId = payload

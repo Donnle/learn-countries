@@ -12,7 +12,8 @@ const Cards = ({filteredArray}: Props) => {
   return (
     <ul className={styles.list}>
       {filteredArray?.map(({country, isLearned}: IFilteredCountry) =>
-        <Card key={country._id} imageLink={country.flag} countryName={country.name} isLearned={isLearned}/>
+        <Card key={country._id} countryId={country._id} imageLink={country.flag} countryName={country.name}
+              isLearned={isLearned}/>
       )}
     </ul>
   )
