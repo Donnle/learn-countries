@@ -6,11 +6,9 @@ import {
   LOAD_COUNTRIES,
   LOAD_USER_DATA, REMOVE_LEARNED_COUNTRY,
   REQUEST,
-  SORT_COUNTRIES,
   SUCCESS
 } from "./constants";
 import {
-  countriesEntitiesSelector,
   userLearnedCountriesSelector
 } from "./selectors";
 
@@ -31,12 +29,9 @@ export const loadCountries = () => async (dispatch: any, getState: any) => {
   dispatch({type: LOAD_COUNTRIES + REQUEST})
   try {
     const {data} = await axios.get('/countries/getAllCountries')
-    dispatch({type: LOAD_COUNTRIES + SUCCESS, payload: data})
     const state = getState()
-
     const learnedCountries = userLearnedCountriesSelector(state)
-    const allCountries = countriesEntitiesSelector(state)
-    dispatch({type: SORT_COUNTRIES, payload: {allCountries, learnedCountries}})
+    dispatch({type: LOAD_COUNTRIES + SUCCESS, payload: {data, learnedCountries}})
   } catch (error) {
     console.log(error)
     dispatch({type: LOAD_COUNTRIES + FAILURE, payload: error})

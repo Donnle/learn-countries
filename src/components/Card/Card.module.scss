@@ -1,4 +1,5 @@
 .card {
+  justify-self: center;
   background-color: #68BEEC;
   border-radius: 15px;
   overflow: hidden;
@@ -7,7 +8,7 @@
 }
 
 .img {
-  width: 380px;
+  max-width: 380px;
   height: 240px;
 
   img {

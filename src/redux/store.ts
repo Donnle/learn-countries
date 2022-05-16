@@ -23,36 +23,23 @@ export interface ICountry {
   flag: string
 }
 
+export interface IFilteredCountry {
+  country: ICountry
+  isLearned: boolean
+}
+
 export interface ICountries {
   entities: {
-    [key: string]: ICountry
+    [key: string]: IFilteredCountry
   }
   loading: boolean
   loaded: boolean
   error: null | object
 }
 
-export interface IFilteredCountry {
-  country: ICountry
-  isLearned: boolean
-}
-
-export interface IFilteredCountries {
-  onlyLearnedCountries: {
-    [key: string]: IFilteredCountry
-  }
-  onlyNotLearnedCountries: {
-    [key: string]: IFilteredCountry
-  }
-  allCountries: {
-    [key: string]: IFilteredCountry
-  }
-}
-
 export interface IState {
   user: IUser
   countries: ICountries
-  sortedCountries: IFilteredCountries
 }
 
 const persistedState = loadState()

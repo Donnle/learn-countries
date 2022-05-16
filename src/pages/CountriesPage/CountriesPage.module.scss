@@ -8,15 +8,6 @@
   padding: 0 20px;
 }
 
-.list {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  column-gap: 20px;
-  row-gap: 40px;
-  flex-wrap: wrap;
-}
-
 @media (max-width: 819px) {
   .list {
     justify-content: center;

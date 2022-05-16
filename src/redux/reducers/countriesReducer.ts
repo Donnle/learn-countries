@@ -1,6 +1,6 @@
 import produce from "immer";
 import {ICountries} from "../store";
-import {FAILURE, LOAD_COUNTRIES, REQUEST, SUCCESS} from "../constants";
+import {ADD_LEARNED_COUNTRY, FAILURE, LOAD_COUNTRIES, REMOVE_LEARNED_COUNTRY, REQUEST, SUCCESS} from "../constants";
 
 const initialState: ICountries = {
   entities: {},
@@ -21,7 +21,14 @@ export default (state = initialState, action: any) => {
       })
     case LOAD_COUNTRIES + SUCCESS:
       return produce(state, (draft) => {
-        draft.entities = payload.reduce((acc: any, item: any) => ({...acc, [item._id]: item}), {})
+        const {data, learnedCountries} = payload
+        draft.entities = data.reduce((acc: any, item: any) => ({
+          ...acc,
+          [item._id]: {
+            country: item,
+            isLearned: learnedCountries.includes(item._id)
+          }
+        }), {})
         draft.loading = false
         draft.loaded = true
       })
@@ -30,6 +37,16 @@ export default (state = initialState, action: any) => {
         draft.loading = false
         draft.loaded = false
         draft.error = payload
+      })
+    case ADD_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.entities[countryId].isLearned = true
+      })
+    case REMOVE_LEARNED_COUNTRY:
+      return produce(state, (draft) => {
+        const {countryId} = payload
+        draft.entities[countryId].isLearned = false
       })
     default:
       return state

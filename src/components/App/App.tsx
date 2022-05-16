@@ -8,9 +8,9 @@ import MainPage from "../../pages/MainPage";
 import AuthPage from "../../pages/AuthPage";
 import CountriesPage from "../../pages/CountriesPage";
 import {
-  allCountriesArraySelector,
-  learnedCountriesArraySelector,
-  notLearnedCountriesArraySelector,
+  allCountriesSelector,
+  learnedCountriesSelector,
+  notLearnedCountriesSelector,
   userDataLoadedSelector,
   userDataLoadingSelector,
   userIdSelector,
@@ -26,8 +26,8 @@ interface Props {
   loadUserInfo: (userId: string) => void
   loading: boolean
   loaded: boolean
-  notLearnedCountries: Array<IFilteredCountry>
   learnedCountries: Array<IFilteredCountry>
+  notLearnedCountries: Array<IFilteredCountry>
   allCountries: Array<IFilteredCountry>
 }
 
@@ -75,9 +75,9 @@ const mapStateToProps = (state: any) => ({
   userId: userIdSelector(state),
   loading: userDataLoadingSelector(state),
   loaded: userDataLoadedSelector(state),
-  learnedCountries: learnedCountriesArraySelector(state),
-  notLearnedCountries: notLearnedCountriesArraySelector(state),
-  allCountries: allCountriesArraySelector(state),
+  learnedCountries: learnedCountriesSelector(state),
+  notLearnedCountries: notLearnedCountriesSelector(state),
+  allCountries: allCountriesSelector(state),
 })
 
 const mapDispatchToProps = (dispatch: any) => ({

@@ -1,5 +1,5 @@
 import {createSelector} from "reselect";
-import {IState} from "./store";
+import {IFilteredCountry, IState} from "./store";
 
 export const userIdSelector = ({user}: IState) => user.userId
 export const userDataSelector = ({user}: IState) => user.userData
@@ -11,10 +11,10 @@ export const countriesEntitiesSelector = ({countries}: IState) => countries.enti
 export const countriesLoadingSelector = ({countries}: IState) => countries.loading
 export const countriesLoadedSelector = ({countries}: IState) => countries.loaded
 
-export const learnedCountriesSelector = ({sortedCountries}: IState) => sortedCountries.onlyLearnedCountries
-export const notLearnedCountriesSelector = ({sortedCountries}: IState) => sortedCountries.onlyNotLearnedCountries
-export const allCountriesSelector = ({sortedCountries}: IState) => sortedCountries.allCountries
-
-export const learnedCountriesArraySelector = createSelector(learnedCountriesSelector, Object.values)
-export const notLearnedCountriesArraySelector = createSelector(notLearnedCountriesSelector, Object.values)
-export const allCountriesArraySelector = createSelector(allCountriesSelector, Object.values)
+export const learnedCountriesSelector = createSelector(countriesEntitiesSelector, (res) =>
+  Object.values(res).filter(({isLearned}: IFilteredCountry) => isLearned)
+)
+export const notLearnedCountriesSelector = createSelector(countriesEntitiesSelector, (res) =>
+  Object.values(res).filter(({isLearned}: IFilteredCountry) => !isLearned)
+)
+export const allCountriesSelector = createSelector(countriesEntitiesSelector, Object.values)
