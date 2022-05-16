@@ -1,5 +1,5 @@
 import axios from "axios";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Navigate, Route, Routes} from 'react-router';
 import Header from '../Header'
@@ -19,6 +19,7 @@ import {loadUserInfo} from "../../redux/actions";
 import {IFilteredCountry} from "../../redux/store";
 
 import styles from './App.module.scss'
+import CardsPage from "../../pages/CardsPage";
 
 
 interface Props {
@@ -32,6 +33,7 @@ interface Props {
 }
 
 const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learnedCountries, allCountries}: Props) => {
+  const [activeCountryId, setActiveCountryId] = useState<number>(145)
   const registrationFunc = (username: string, password: string) =>
     axios.post('/user/registration', {username, password})
   const loginFunc = (username: string, password: string) =>
@@ -41,7 +43,6 @@ const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learne
     if (userId) loadUserInfo(userId)
   }, [userId, loadUserInfo])
   if (!loaded && loading) return <p>Loading...</p>
-
 
   return (
     <div className={styles.container}>
@@ -56,6 +57,10 @@ const App = ({userId, loadUserInfo, loaded, loading, notLearnedCountries, learne
                  <AuthPage title='Регистрация' buttonText='Зарегистрироваться' callFunc={registrationFunc}/>}/>
 
 
+        <Route path='/cards_countries'
+               element={userId ?
+                 <CardsPage activeCountryId={activeCountryId} setActiveCountryId={setActiveCountryId}/> :
+                 <Navigate replace to="/"/>}/>
         <Route path='/known_countries'
                element={userId ? <CountriesPage filteredArray={learnedCountries}/> : <Navigate replace to="/"/>}/>
         <Route path='/unknown_countries'

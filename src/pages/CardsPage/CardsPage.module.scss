@@ -1,0 +1,74 @@
+.main {
+  flex: 1 1 100%;
+  background-color: #e6e6e6;
+}
+
+.wrapper {
+  display: flex;
+  padding-top: 15vh;
+  padding-bottom: 20vh;
+  justify-content: center;
+}
+
+.card {
+  width: 360px;
+  height: 240px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  backface-visibility: hidden;
+  background-color: #fff;
+}
+
+.front img {
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.back span {
+  font-size: 2rem;
+}
+
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(360deg);
+}
+
+.control__wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.prev,
+.next {
+  padding: 20px;
+  background-color: #C4C4C4;
+  border-radius: 10px;
+}
