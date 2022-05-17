@@ -8,9 +8,7 @@ import {
   REQUEST,
   SUCCESS
 } from "./constants";
-import {
-  userLearnedCountriesSelector
-} from "./selectors";
+import {userLearnedCountriesSelector} from "./selectors";
 
 export const addUserId = (userId: string) => ({type: ADD_USER_ID, payload: userId})
 

@@ -6,7 +6,7 @@ import {loadState, saveState} from "./localStorage";
 
 export interface IUserData {
   username?: string
-  learnedCountries?: Array<string>
+  learnedCountries?: string[]
 }
 
 export interface IUser {

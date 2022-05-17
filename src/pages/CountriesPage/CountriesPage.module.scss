@@ -1,16 +1,5 @@
-.main {
-  flex: 1 1 100%;
-}
-
 .wrapper {
   max-width: 1240px;
   margin: 55px auto;
   padding: 0 20px;
 }
-
-@media (max-width: 819px) {
-  .list {
-    justify-content: center;
-  }
-}
-

@@ -6,18 +6,16 @@ interface Props {
   linkText: string
 }
 
-const Footer = ({title, link, linkText}: Props) => {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.background}>
-        <div className={styles.text}>
-          <h2 className={styles.title}>
-            {title}<a href={link}>{linkText}</a>
-          </h2>
-        </div>
+const Footer = ({title, link, linkText}: Props) => (
+  <footer className={styles.footer}>
+    <div className={styles.background}>
+      <div className={styles.text}>
+        <h2 className={styles.title}>
+          {title}<a href={link}>{linkText}</a>
+        </h2>
       </div>
-    </footer>
-  )
-}
+    </div>
+  </footer>
+)
 
 export default Footer
