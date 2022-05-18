@@ -6,6 +6,7 @@ import CountriesHoc from "../../hocs/CountriesHOC";
 import AuthHoc from "../../hocs/AuthHOC";
 import Header from '../Header'
 import Footer from "../Footer";
+import Loader from "../Loader";
 import {userDataLoadedSelector, userDataLoadingSelector, userIdSelector} from "../../redux/selectors";
 import {loadUserInfo} from "../../redux/actions";
 
@@ -23,7 +24,7 @@ const App = ({userId, loadUserInfo, loading, loaded}: Props) => {
   useEffect(() => {
     if (userId) loadUserInfo(userId)
   }, [userId, loadUserInfo])
-  if (!loaded && loading) return <p>Loading...</p>
+  if (!loaded && loading) return <Loader/>
 
   return (
     <div className={styles.container}>

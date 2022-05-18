@@ -13,6 +13,7 @@ import {
 } from "../../redux/selectors";
 import {loadCountries} from "../../redux/actions";
 import CardsPage from "../../pages/CardsPage";
+import Loader from "../../components/Loader";
 
 interface Props {
   learnedCountries: IFilteredCountry[]
@@ -31,7 +32,7 @@ const CountriesHoc =
     useEffect(() => {
       if (userData && !loaded && !loading) loadCountries()
     }, [userData, loaded, loading, loadCountries])
-    if (!loaded && loading) return <p>Loading...</p>
+    if (!loaded && loading) return <Loader/>
 
     return (
       <Routes>
