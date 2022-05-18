@@ -12,6 +12,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.3",
     "axios": "^0.27.2",
+    "concurrently": "^7.2.0",
     "immer": "^9.0.12",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
@@ -29,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"nodemon simple_server/server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
