@@ -13,7 +13,8 @@ const AuthHoc = () => {
       <Route path='login' element={<AuthPage title='Логин' buttonText='Войти' callFunc={loginFunc}/>}/>
       <Route path='registration'
              element={<AuthPage title='Регистрация' buttonText='Зарегистрироваться' callFunc={registrationFunc}/>}/>
-      <Route path='*' element={<Navigate replace to='/'/>}/>
+      <Route path='*' element={<Navigate replace to='login'/>}/>
+      <Route path='' element={<Navigate replace to='/'/>}/>
     </Routes>
   )
 }

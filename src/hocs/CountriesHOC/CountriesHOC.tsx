@@ -41,6 +41,7 @@ const CountriesHoc =
         <Route path='known' element={<CountriesPage filteredArray={learnedCountries}/>}/>
         <Route path='unknown' element={<CountriesPage filteredArray={notLearnedCountries}/>}/>
         <Route path='all' element={<CountriesPage filteredArray={allCountries}/>}/>
+        <Route path='*' element={<Navigate replace to='cards'/>}/>
         <Route path='' element={<Navigate replace to='/'/>}/>
       </Routes>
     )

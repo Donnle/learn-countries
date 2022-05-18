@@ -22,8 +22,11 @@ const AuthPage = ({title, buttonText, callFunc, addUserId}: Props) => {
     e.preventDefault()
     try {
       const {data} = await callFunc(fields.username, fields.password)
-      addUserId(data.userId)
+      addUserId(data.userId || '')
+      alert(data.message)
+      console.log(data.message)
     } catch (e: any) {
+      alert(e.response.data.message)
       console.log(e.response.data.message)
     }
   }

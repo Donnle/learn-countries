@@ -31,8 +31,8 @@ const App = ({userId, loadUserInfo, loading, loaded}: Props) => {
       <div className={styles.main}>
         <Routes>
           <Route path='' element={<MainPage/>}/>
-          <Route path='auth/*' element={userId ? <Navigate replace to=''/> : <AuthHoc/>}/>
-          <Route path='countries/*' element={userId ? <CountriesHoc/> : <Navigate replace to=''/>}/>
+          <Route path='auth/*' element={userId ? <Navigate replace to='/'/> : <AuthHoc/>}/>
+          <Route path='countries/*' element={userId ? <CountriesHoc/> : <Navigate replace to='/'/>}/>
           <Route path='*' element={<Navigate replace to='/'/>}/>
         </Routes>
       </div>
