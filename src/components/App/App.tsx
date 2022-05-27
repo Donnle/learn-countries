@@ -1,7 +1,7 @@
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import {Navigate, Route, Routes} from 'react-router';
-import MainPage from "../../pages/MainPage";
+import MainPage from "../../pagess/MainPage";
 import CountriesHoc from "../../hocs/CountriesHOC";
 import AuthHoc from "../../hocs/AuthHOC";
 import Header from '../Header'

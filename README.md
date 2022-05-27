@@ -10,10 +10,9 @@ cards are reviewed at increasing intervals.
 
 ### How to start app
 
-If you want to run app you need to in the `learn-countries` directory and write `npm install` and `npm test` in the
-console (don't close the console). Go to `learn-countries/simple_server` directory and also write `npm install` in the
-console. After you need go to `learn-countries` and write `npm start` in the console. Finished! You can write
-http://localhost:3000 in your browser and start learn countries!
+If you need to run app, you need to `npm install` in `learn-countries/simple_server`, `npm install` in `learn-countries`
+, and `npm start` in `learn-countries` Finished! You can write http://localhost:3000 in your browser and start learn
+countries.
 
 ## P. S.
 

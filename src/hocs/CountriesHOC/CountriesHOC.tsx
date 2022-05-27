@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {Navigate, Route, Routes} from "react-router";
-import CountriesPage from "../../pages/CountriesPage/CountriesPage";
+import CountriesPage from "../../pagess/CountriesPage/CountriesPage";
 import {IFilteredCountry, IState, IUserData} from "../../redux/store";
 import {
   allCountriesSelector,
@@ -12,7 +12,7 @@ import {
   userDataSelector
 } from "../../redux/selectors";
 import {loadCountries} from "../../redux/actions";
-import CardsPage from "../../pages/CardsPage";
+import CardsPage from "../../pagess/CardsPage";
 import Loader from "../../components/Loader";
 
 interface Props {

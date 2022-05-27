@@ -1,6 +1,6 @@
 import {Navigate, Route, Routes} from "react-router";
 import axios from "axios";
-import AuthPage from "../../pages/AuthPage/AuthPage";
+import AuthPage from "../../pagess/AuthPage/AuthPage";
 
 const AuthHoc = () => {
   const registrationFunc = (username: string, password: string) =>
