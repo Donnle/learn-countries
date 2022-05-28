@@ -18,7 +18,3 @@ countries.
 
 If you don't need learn countries, but you like this method. You will change DataBase and learn what you want. In
 file `db.json` you will see database fields.
-
-
-UPD: 
-I hope you will not crash my database =)
