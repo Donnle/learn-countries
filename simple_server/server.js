@@ -13,7 +13,7 @@ app.use('/user', userRouter)
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.DB_URL)
+    await mongoose.connect('mongodb+srv://admin:admin@databases.rudz7.mongodb.net/learnCountries?retryWrites=true&w=majority')
     app.listen(PORT, () => {
       console.log(`Success started on port ${PORT}`)
     })
